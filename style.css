@@ -1,0 +1,24 @@
+*{box-sizing:border-box}
+body{font-family:Arial,sans-serif;margin:0;min-height:100vh;text-align:center;color:white;
+background-image:linear-gradient(rgba(3,15,35,.55),rgba(3,15,35,.75)),url("home.jpg");
+background-size:cover;background-position:center;background-attachment:fixed;transition:background-image .5s ease-in-out}
+header{padding:45px 20px 30px;background:rgba(0,18,45,.55)}
+header h1{margin:0;font-size:clamp(32px,5vw,54px);text-shadow:0 3px 12px rgba(0,0,0,.8)}
+header p{margin-top:12px;font-size:19px;color:#dbeafe}
+nav{padding:18px;background:rgba(0,12,32,.58)}
+nav button,.contact-button{background:linear-gradient(90deg,#2563eb,#06b6d4);color:white;border:none;
+padding:12px 18px;margin:6px;cursor:pointer;border-radius:8px;font-size:15px;font-weight:bold}
+nav button:hover,.contact-button:hover{transform:translateY(-2px);box-shadow:0 0 16px rgba(34,211,238,.85)}
+#content{background:rgba(1,18,42,.76);backdrop-filter:blur(8px);max-width:820px;margin:80px auto;
+padding:38px;border:1px solid rgba(125,211,252,.35);border-radius:14px;min-height:230px;
+box-shadow:0 15px 45px rgba(0,0,0,.45)}
+#content h2{margin-top:0;font-size:32px}
+#content p{color:#e0f2fe;font-size:18px;line-height:1.7}
+.contact-form{display:grid;gap:14px;max-width:550px;margin:24px auto 0;text-align:left}
+.contact-form label{font-weight:bold}
+.contact-form input,.contact-form textarea{width:100%;padding:12px;border:1px solid #7dd3fc;border-radius:7px;font-size:16px}
+.contact-form textarea{min-height:130px;resize:vertical}
+.success{border:1px solid #86efac;padding:20px;border-radius:10px}
+.error{border:1px solid #fca5a5;padding:20px;border-radius:10px}
+footer{background:rgba(0,12,32,.75);padding:16px;margin-top:40px;color:#cbd5e1}
+@media(max-width:700px){#content{margin:45px 18px;padding:25px}nav button{width:90%;max-width:320px}}

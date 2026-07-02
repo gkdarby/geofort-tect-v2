@@ -14,15 +14,38 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $status = "Please enter a valid email address.";
         $statusClass = "error";
     } else {
-        $file = fopen("messages.csv", "a");
-        if ($file) {
-            fputcsv($file, [date("Y-m-d H:i:s"), $name, $email, $message]);
-            fclose($file);
-            $status = "Thank you, " . htmlspecialchars($name) . ". Your message was submitted.";
-            $statusClass = "success";
-        } else {
-            $status = "The server could not save your message.";
+        $dbHost = getenv("DB_HOST");
+        $dbName = getenv("DB_NAME");
+        $dbUser = getenv("DB_USER");
+        $dbPass = getenv("DB_PASSWORD");
+        $dbPort = getenv("DB_PORT") ?: "3306";
+
+        $conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName, (int)$dbPort);
+
+        if ($conn->connect_error) {
+            $status = "Database connection failed.";
             $statusClass = "error";
+        } else {
+            $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, message) VALUES (?, ?, ?)");
+
+            if ($stmt) {
+                $stmt->bind_param("sss", $name, $email, $message);
+
+                if ($stmt->execute()) {
+                    $status = "Thank you, " . htmlspecialchars($name) . ". Your message was submitted.";
+                    $statusClass = "success";
+                } else {
+                    $status = "The server could not save your message.";
+                    $statusClass = "error";
+                }
+
+                $stmt->close();
+            } else {
+                $status = "The server could not prepare the database request.";
+                $statusClass = "error";
+            }
+
+            $conn->close();
         }
     }
 }

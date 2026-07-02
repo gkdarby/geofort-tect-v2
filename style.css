@@ -22,3 +22,61 @@ box-shadow:0 15px 45px rgba(0,0,0,.45)}
 .error{border:1px solid #fca5a5;padding:20px;border-radius:10px}
 footer{background:rgba(0,12,32,.75);padding:16px;margin-top:40px;color:#cbd5e1}
 @media(max-width:700px){#content{margin:45px 18px;padding:25px}nav button{width:90%;max-width:320px}}
+
+.contact-card {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-card h2 {
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    margin-bottom: 20px;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.contact-form label {
+    text-align: left;
+    font-weight: bold;
+    color: white;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.contact-form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.contact-button {
+    margin-top: 10px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    background: #00aeea;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contact-button:hover {
+    background: #007acc;
+}
